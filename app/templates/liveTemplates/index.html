@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recipe.css">
+
+</head>
+<body>
+    <section id="left">
+        <a id="logo" href="#"><img src="images/logo.svg" alt=""></a>
+        <nav>
+            <a href="#"><div class ="navElements" id="create">
+                <div id="navIcon"><img src="images/create.svg"></div>
+                <p>Create</p>
+            </div></a>
+            <a href="#"><div class ="navElements"  id="myrecipes">
+                <div id="navIcon"><img src="images/myrecipes.svg"></div>
+                <p>My recipes</p>
+            </div></a>
+            <a href="#"><div class ="navElements"  id="communities">
+                <div id="navIcon"><img src="images/communities.svg"></div>
+                <p>Communities</p>
+            </div></a>
+        </nav>
+        <div id="notifications">
+            <a href="#"><div class ="navElements" id="create">
+                <div id="navIcon"><img src="images/notifications.svg"></div>
+                <p>Notifications</p>
+                
+            </div></a>
+            <div id="line"></div>
+            <section></section>
+        </div>
+    </section>
+    <section id="feed">
+        <div id="search">
+            <input id="searchbar">
+            <img src="images/magnifyingglass.svg">
+            <label for="searchbar">What are we making today?</label>
+        </div>
+        <section id="hide"></section>
+        <section id="main">
+            <table class="recipe">
+                <tr>
+                    <td>
+                        <div class="pfpcontainer">
+                            <img src="images/pfp.jpg" alt="" class="pfp">
+                        </div>
+                        <p class="username">user12345</p>
+                    </td>
+                    <td>
+                        <img src="images/x.svg" alt="">
+                        <p class="category">descriptor</p>
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </section>
+    </section>
+    <section id="right">
+        <div id="topRight"></div>
+        <div id="featured">
+            <h1>Today's favs</h1>
+        </div>
+    </section>
+</body>
+</html>
