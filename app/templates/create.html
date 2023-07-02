@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Upload Recipe</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.name.label }}
+        {{ form.name(class="form-control") }}
+        {% if form.name.errors %}
+        <ul class="error-list">
+            {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.serving.label }}
+        {{ form.serving(class="form-control") }}
+    </div>
+
+    <div id="ingredientFields">
+
+    </div>
+
+    <div>
+        <button type="button" id="addIngredient">Add Ingredient</button>
+    </div>
+
+    <div id="instructionFields">
+
+    </div>
+
+    <div>
+        <button type="button" id="addInstruction">Add Step</button>
+    </div>
+
+
+    <div>
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+
+<script>
+    var ingredientCount = 0;
+    
+    function deleteElement() {
+        var ingredientIndex = parseInt(this.getAttribute('name'));
+        var ingredientField = document.getElementById('ingredientField-' + ingredientIndex);
+        ingredientField.remove();
+        // Update the labels and button names for the remaining ingredients
+        var remainingIngredients = document.querySelectorAll('[id^="ingredientField-"]');
+        remainingIngredients.forEach(function(element, index) {
+          var currentIndex = parseInt(element.getAttribute('id').split('-')[1]);
+      
+          if (currentIndex > ingredientIndex) {
+            var newIndex = currentIndex - 1;
+            element.querySelector('label').innerHTML = 'Ingredient ' + (newIndex + 1) + ':';
+            element.querySelector('label').setAttribute('name', 'label-' + newIndex);
+            element.querySelector('input').setAttribute('name', 'ingredients-' + newIndex);
+            element.querySelector('button').setAttribute('name', newIndex);
+            element.setAttribute('id','ingredientField-' + newIndex)
+          }
+        });
+        ingredientCount--;
+      }
+    
+
+    document.getElementById('addIngredient').addEventListener('click', function() {
+        var ingredientField = document.createElement('div');
+        var label = document.createElement('label');
+        var input = document.createElement('input');
+        var button = document.createElement('button')
+    
+        label.innerHTML = 'Ingredient ' + (ingredientCount + 1) + ':';
+        label.setAttribute('name', 'label-' + ingredientCount);
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'ingredients-' + ingredientCount);
+        input.setAttribute('class', 'form-control');
+        button.textContent = "Delete";
+        button.setAttribute('name',ingredientCount);
+        button.addEventListener('click', deleteElement);
+    
+    
+        ingredientField.appendChild(label);
+        ingredientField.appendChild(input);
+        ingredientField.appendChild(button);
+        ingredientField.setAttribute('id', 'ingredientField-' + ingredientCount);
+    
+        document.getElementById('ingredientFields').appendChild(ingredientField);
+    
+        ingredientCount++;
+    });
+
+    var stepsCount = 0;
+
+    function deleteStep() {
+        var instructionIndex = parseInt(this.getAttribute('name'));
+        var instructionField = document.getElementById('instructionField-' + instructionIndex);
+        instructionField.remove();
+        // Update the labels and button names for the remaining ingredients
+        var remainingInstructions = document.querySelectorAll('[id^="instructionField-"]');
+        remainingInstructions.forEach(function(element, index) {
+          var currentIndex = parseInt(element.getAttribute('id').split('-')[1]);
+      
+          if (currentIndex > instructionIndex) {
+            var newIndex = currentIndex - 1;
+            element.querySelector('label').innerHTML = 'Step '+(newIndex + 1) + ':';
+            element.querySelector('label').setAttribute('name', 'label-' + newIndex);
+            element.querySelector('textarea').setAttribute('name', 'instructions-' + newIndex);
+            element.querySelector('button').setAttribute('name', newIndex);
+            element.setAttribute('id','instructionField-' + newIndex)
+          }
+        });
+        stepsCount--;
+    }
+    
+    document.getElementById('addInstruction').addEventListener('click', function() {
+        var instructionField = document.createElement('div');
+        var label = document.createElement('label');
+        var input = document.createElement('textarea');
+        var button = document.createElement('button')
+    
+        label.innerHTML = 'Step '+(stepsCount + 1) + ':';
+        label.setAttribute('name', 'label-' + stepsCount);
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'instructions-' + stepsCount);
+        input.setAttribute('class', 'form-control');
+        input.setAttribute('rows', '4'); // Set the number of rows
+        input.setAttribute('cols', '50');
+        button.textContent = "Delete";
+        button.setAttribute('name',stepsCount);
+        button.addEventListener('click', deleteStep);
+    
+    
+        instructionField.appendChild(label);
+        instructionField.appendChild(input);
+        instructionField.appendChild(button);
+        instructionField.setAttribute('id', 'instructionField-' + stepsCount);
+
+    
+        document.getElementById('instructionFields').appendChild(instructionField);
+    
+        stepsCount++;
+    });</script>
+{% endblock %}

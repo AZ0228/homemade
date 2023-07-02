@@ -1,0 +1,28 @@
+.recipe{
+    width:100%;
+    height: max(600px, 40vh)
+}
+
+.username{
+    border-radius:0 17px 17px 0px;
+    padding:6px 25px;
+    background-color: var(--user);
+    transform: translateX(-10px);
+    z-index:1;
+    font-size: 16px;
+}
+
+tr{
+    display:flex;
+}
+
+td{
+    display:flex;
+    align-items: center;
+}
+
+.category{
+    padding-left:5px;
+    padding-right:10px;
+    transform: translateY(-1px);
+}
