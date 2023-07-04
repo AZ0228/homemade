@@ -26,3 +26,27 @@ td{
     padding-right:10px;
     transform: translateY(-1px);
 }
+
+.content{
+    height:450px;
+    margin-left: 75px;
+}
+
+.content img{
+    /* width: 100%; */
+    height: 100%;
+}
+
+.description{
+    background-color: var(--accent1);
+    width: 100px;
+    height: 100%;
+    margin-left: 20px;
+    border-radius: 10px;
+    flex-grow: 1;
+}
+
+.content-data{
+    width: 100%;
+    margin-right: 20px;
+}
