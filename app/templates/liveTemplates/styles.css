@@ -7,6 +7,9 @@
     --user: #F4F1AB;
     --accent1: #F4DBB4;
     --accent2: #F98012;
+
+    --left: 230px;
+    --right: 370px;
 }
 
 body{
@@ -26,7 +29,7 @@ a{
 
 #left{
     height:100%;
-    width: 230px;
+    width: var(--left);
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -46,8 +49,8 @@ a{
     flex-wrap: nowrap;
     flex-grow: 0;
     position: absolute;
-    left: 230px;
-    right: 370px;
+    left: var(--left);
+    right: var(--right);
     overflow: auto;
     background-color: var(--feed);
 }
@@ -58,11 +61,12 @@ a{
     width:100%;
     background: var(--bg);
     z-index: 3;
+    left: var(--left);
 }
 
 #right{
     height:100%;
-    width: 370px;
+    width: var(--right);
     /* left: 75%; */
     position: fixed;
     right: 0;
@@ -83,8 +87,8 @@ a{
     position: fixed;
     /* width: 100%; */
     /* left:20%; */
-    right: 370px;
-    left: 230px;
+    right: var(--right);
+    left: var(--left);
     top:25px;
     display: flex;
     z-index: 4;
@@ -221,4 +225,23 @@ a{
     z-index: 2;
     position: relative;
 
+}
+
+@media(max-width: 1200px){
+    :root{
+        --left:180px;
+        --right:250px;
+    }
+}
+
+@media(max-width:900px){
+    :root{
+        --right:30px;
+    }
+    #feed{
+        padding-right: 30px;
+    }
+    #right{
+        width:30px;
+    }
 }
