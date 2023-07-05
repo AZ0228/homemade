@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root{
     --bg: #F0E6D2;
@@ -8,8 +9,8 @@
     --accent1: #F4DBB4;
     --accent2: #F98012;
 
-    --left: 230px;
-    --right: 370px;
+    --left: 265px;
+    --right: 340px;
 }
 
 body{
@@ -138,15 +139,35 @@ a{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    border-radius: 41px;
+}
+
+.navElements:not(#notification){
+    background-color: var(--feed);
+    padding: 0px 15px;
+    margin-bottom: 10px;
+    height: 50px;
 }
 
 .navElements p{
+    font-size: 18px;
+    margin: 7px;
+    flex-grow: 1;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'PT Sans',sans serif;
+}
+
+#notifications p{
+    font-weight:600;
     font-size:20px;
 }
 
 #navIcon{
     width:30px;
-    margin-right:20px;
+    /* margin-right: 10px; */
+    transform: translateY(3px);
+    margin-left: 5px;
 }
 
 #notifications{
@@ -155,17 +176,20 @@ a{
     flex-direction: column;
     flex-grow: 1;
     align-items: center;
+    /* font-weight: 600; */
 }
 
 #notifications section{
-    background-color:#F0F0F0;
+    background-color: var(--feed);
     /* bottom:50px; */
-    width: 115%;
+    width: 130%;
     /* top: 400px; */
     position:relative;
     flex-grow: 1;
     height: 100px;
     margin-bottom: 25px;
+    margin-top: 5px;
+    border-radius: 10px;
 }
 
 #notifications #line{
